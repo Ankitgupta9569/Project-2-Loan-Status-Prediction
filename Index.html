@@ -1,1 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AKG Study Group – eBook Offer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    :root {
+      --primary: #ff6f00;
+      --dark-bg: #121212;
+      --light-bg: #ffffff;
+      --text-light: #fff;
+      --text-dark: #000;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--light-bg);
+      color: var(--text-dark);
+      transition: all 0.4s ease;
+    }
+
+    .dark-mode {
+      background-color: var(--dark-bg);
+      color: var(--text-light);
+    }
+
+    header {
+      background: linear-gradient(to right, #ff8a00, #e52e71);
+      color: white;
+      padding: 2rem;
+      text-align: center;
+      animation: fadeIn 2s ease;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.2rem;
+    }
+
+    .timer {
+      font-size: 1.4rem;
+      margin-top: 1rem;
+    }
+
+    .testimonials {
+      padding: 2rem;
+      background: #f7f7f7;
+      animation: slideIn 1.5s ease;
+    }
+
+    .testimonial {
+      background: white;
+      border-left: 4px solid #ff6f00;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-radius: 5px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    }
+
+    .buy-btn {
+      display: inline-block;
+      padding: 1rem 2rem;
+      background-color: #ff6f00;
+      color: white;
+      border: none;
+      font-size: 1.2rem;
+      cursor: pointer;
+      margin-top: 1rem;
+      animation: pulse 2s infinite;
+    }
+
+    .section {
+      padding: 2rem;
+    }
+
+    .language-toggle, .dark-toggle {
+      margin: 0.5rem;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 0.9rem;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 1.5rem;
+      background-color: #222;
+      color: white;
+    }
+
+    .social-icons img {
+      width: 30px;
+      margin: 0 0.5rem;
+      vertical-align: middle;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+
+    @keyframes slideIn {
+      from {transform: translateX(-100px); opacity: 0;}
+      to {transform: translateX(0); opacity: 1;}
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🔥 AKG Study Group – Special eBook Bundle Offer!</h1>
+    <p class="timer" id="countdown">Offer ends in: 00:00:00</p>
+    <button class="buy-btn" onclick="window.location.href='https://pages.razorpay.com/pl_QbcEmkrBP52MOE/view#view-1'">
+      ₹50 में तुरंत खरीदें
+    </button>
+  </header>
+
+  <div class="section">
+    <button class="language-toggle" onclick="toggleHindi()">🔁 हिंदी / English</button>
+    <button class="dark-toggle" onclick="toggleDarkMode()">🌙 Toggle Dark Mode</button>
+    
+    <h2>📘 Student Reviews & Success</h2>
+    <div class="testimonials">
+      <div class="testimonial">"AKG की English Bundle eBook से मेरा Grammar बहुत अच्छा हो गया!" – Priya Sharma</div>
+      <div class="testimonial">"GK eBook में सारे Exams के लिए एक जगह Complete Notes हैं!" – Rahul Verma</div>
+      <div class="testimonial">"सिर्फ ₹50 में इतनी Valuable चीज़ – Unbelievable!" – Kavita Joshi</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>🎯 Auto WhatsApp Message After Payment</h2>
+    <p>ईबुक खरीदने के बाद आपको WhatsApp पर Confirmation और Download Link मिलेगा!</p>
+    <button class="buy-btn" onclick="openWhatsApp()">WhatsApp करें</button>
+  </div>
+
+  <div class="footer">
+    <div>📧 Contact: akgstudygroup@gmail.com</div>
+    <div class="social-icons">
+      <a href="https://instagram.com/akgstudygroup" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" /></a>
+      <a href="https://wa.me/918000000000" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" /></a>
+      <a href="mailto:akgstudygroup@gmail.com"><img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Email" /></a>
+    </div>
+  </div>
+
+  <script>
+    // Countdown Timer
+    const endDate = new Date();
+    endDate.setHours(endDate.getHours() + 2); // Set 2-hour offer
+
+    const countdown = document.getElementById('countdown');
+    setInterval(() => {
+      const now = new Date();
+      const diff = endDate - now;
+      if (diff <= 0) {
+        countdown.textContent = "Offer Expired!";
+        return;
+      }
+      const h = Math.floor(diff / 1000 / 3600);
+      const m = Math.floor((diff / 1000 % 3600) / 60);
+      const s = Math.floor(diff / 1000 % 60);
+      countdown.textContent = `Offer ends in: ${h}h ${m}m ${s}s`;
+    }, 1000);
+
+    // WhatsApp trigger
+    function openWhatsApp() {
+      window.open("https://wa.me/918000000000?text=Hi! I just bought the AKG Study Group eBook. Please confirm my access.", "_blank");
+    }
+
+    // Hindi Toggle
+    let isHindi = false;
+    function toggleHindi() {
+      isHindi = !isHindi;
+      document.body.innerHTML = isHindi ?
+        document.body.innerHTML.replace("Special eBook Bundle Offer", "विशेष ईबुक बंडल ऑफर").replace("Student Reviews & Success", "छात्र समीक्षाएं और सफलता की कहानियां") :
+        location.reload(); // reload back to English
+    }
+
+    // Dark Mode
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+    }
+  </script>
+
+</body>
+</html>
 
